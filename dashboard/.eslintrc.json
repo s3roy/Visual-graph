@@ -1,0 +1,52 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "next/core-web-vitals"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "simple-import-sort"],
+  "rules": {
+    "indent": ["error", 2], // Enforce consistent indentation (2 spaces)
+    "quotes": ["error", "single"], // Enforce the use of single quotes
+    "semi": ["error", "always"], // Require semicolons at the end of statements
+    "no-unused-vars": "warn", // Warn about unused variables
+    "no-console": "warn", // Warn about console.log and console.error
+    "react/prop-types": "off", // Disable prop-types checking
+    "react/react-in-jsx-scope": "off", // Enforce importing React in JSX scope
+    "react/jsx-uses-react": "off", // Disable warning about unused React import
+    "react/jsx-uses-vars": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "ignoreComments": true, //"comments": 80
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "valid-typeof": "error",
+    "no-nested-ternary": "error",
+    "prefer-const": "error",
+    "no-const-assign": "error",
+    "eqeqeq": ["error", "always"]
+  }
+}
