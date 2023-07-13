@@ -1,11 +1,12 @@
-import { SearchIcon } from '@chakra-ui/icons';
-import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
+import { Box, Flex, IconButton } from '@chakra-ui/react';
 import User from '@mui/icons-material/AccountCircleOutlined';
 import Shortcut from '@mui/icons-material/GridViewOutlined';
 import NotificationsIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import TranslateIcon from '@mui/icons-material/TranslateOutlined';
 import Day from '@mui/icons-material/WbSunnyOutlined';
 import React from 'react';
+
+import CustomSearchModal from './customModals/CustomSearchModal';
 
 interface SearchBoxProps {}
 
@@ -22,25 +23,28 @@ const SearchBox: React.FC<SearchBoxProps> = () => {
       alignItems="center"
       justifyContent="space-between"
     >
-      <Box ml="4" display="flex" alignItems="center">
-        <IconButton aria-label="Search" icon={<SearchIcon />} />
-        <Text fontSize="lg" ml="2">
-          Search
-        </Text>
-      </Box>
+      <CustomSearchModal />
 
       <Box display="flex">
-        <IconButton variant="ghost" icon={<TranslateIcon />} aria-label={''} />
-        <IconButton variant="ghost" icon={<Day />} aria-label={''} />
-        <IconButton variant="ghost" icon={<Shortcut />} aria-label={''} />
+        <IconButton
+          variant="ghost"
+          icon={<TranslateIcon />}
+          aria-label="translate"
+        />
+        <IconButton variant="ghost" icon={<Day />} aria-label="theme" />
+        <IconButton variant="ghost" icon={<Shortcut />} aria-label="shortcut" />
         <IconButton
           variant="ghost"
           icon={<NotificationsIcon />}
-          aria-label={''}
+          aria-label="notifications"
         />
 
         <Box>
-          <IconButton variant="ghost" icon={<User />} aria-label={''} />
+          <IconButton
+            variant="ghost"
+            icon={<User />}
+            aria-label="user profile"
+          />
         </Box>
       </Box>
     </Flex>
