@@ -1,13 +1,15 @@
-import { Flex, Box, Text } from '@chakra-ui/react';
-import { IconButton } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import TranslateIcon from '@mui/icons-material/TranslateOutlined';
-import Day from '@mui/icons-material/WbSunnyOutlined';
+import { Box, Flex, IconButton, Text } from '@chakra-ui/react';
+import User from '@mui/icons-material/AccountCircleOutlined';
 import Shortcut from '@mui/icons-material/GridViewOutlined';
 import NotificationsIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import User from '@mui/icons-material/AccountCircleOutlined';
+import TranslateIcon from '@mui/icons-material/TranslateOutlined';
+import Day from '@mui/icons-material/WbSunnyOutlined';
+import React from 'react';
 
-const SearchBox: React.FC<> = () => {
+interface SearchBoxProps {}
+
+const SearchBox: React.FC<SearchBoxProps> = () => {
   return (
     <Flex
       height="16"
@@ -28,13 +30,17 @@ const SearchBox: React.FC<> = () => {
       </Box>
 
       <Box display="flex">
-        <IconButton variant="ghost" icon={<TranslateIcon />} />
-        <IconButton variant="ghost" icon={<Day />} />
-        <IconButton variant="ghost" icon={<Shortcut />} />
-        <IconButton variant="ghost" icon={<NotificationsIcon />} />
+        <IconButton variant="ghost" icon={<TranslateIcon />} aria-label={''} />
+        <IconButton variant="ghost" icon={<Day />} aria-label={''} />
+        <IconButton variant="ghost" icon={<Shortcut />} aria-label={''} />
+        <IconButton
+          variant="ghost"
+          icon={<NotificationsIcon />}
+          aria-label={''}
+        />
 
         <Box>
-          <IconButton variant="ghost" icon={<User />} />
+          <IconButton variant="ghost" icon={<User />} aria-label={''} />
         </Box>
       </Box>
     </Flex>
