@@ -6,6 +6,7 @@ interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
   return (
     <Stack height="100vh" borderRight="1px" width="15vw">
+      <Image></Image>
       <Box>
         <Text>Heading</Text>
         <div>
