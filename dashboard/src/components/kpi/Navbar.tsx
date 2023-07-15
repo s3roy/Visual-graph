@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react';
+import { Box, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
 interface NavbarProps {}
@@ -6,8 +6,13 @@ interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
   return (
     <Stack height="100vh" borderRight="1px" width="15vw">
-      <div>Hello</div>
-      <div>World</div>
+      <Box>
+        <Text>Heading</Text>
+        <div>
+          <Text>Sub 1</Text>
+          <Text>Sub 2</Text>
+        </div>
+      </Box>
     </Stack>
   );
 };
