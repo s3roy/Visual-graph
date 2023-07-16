@@ -6,9 +6,13 @@ const useFetchSector = (sortBy: string = '', filterValue: string = '') => {
   const [sectors, setSectors] = useState<any>([]);
   const [loading, setLoading] = useState(true);
 
+  if (sortBy === 'start year') sortBy = 'startYear';
+  if (sortBy === 'end year') sortBy = 'endYear';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (sortBy && filterValue && !sortBy && !filterValue) return;
         let params = {};
 
         if (sortBy !== '') {

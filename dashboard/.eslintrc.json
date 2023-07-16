@@ -18,7 +18,7 @@
   },
   "plugins": ["react", "simple-import-sort"],
   "rules": {
-    "indent": ["error", 2], // Enforce consistent indentation (2 spaces)
+    // "indent": ["error", 2], // Enforce consistent indentation (2 spaces)
     "quotes": ["error", "single"], // Enforce the use of single quotes
     "semi": ["error", "always"], // Require semicolons at the end of statements
     "no-unused-vars": "warn", // Warn about unused variables

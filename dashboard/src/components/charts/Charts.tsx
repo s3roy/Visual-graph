@@ -1,6 +1,7 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
+import CountryRelevance from './CountryRelevance';
 import IntensityBarChart from './IntensityBarChart';
 import Sector from './SectorDonutChart/Sector';
 
@@ -9,9 +10,20 @@ interface DataPoint {
   intensity: number;
 }
 
-const Charts: React.FC = () => {
-  // Example data
-  const [chartDataTntensityVsTopic, setChartData] = useState<DataPoint[]>([
+interface ChartProps {
+  cityList: string[];
+  countryList: string[];
+  startYearList: number[];
+  endYearList: number[];
+}
+
+const Charts: React.FC<ChartProps> = ({
+  cityList,
+  countryList,
+  startYearList,
+  endYearList,
+}) => {
+  const [chartDataIntensityVsTopic, setChartData] = useState<DataPoint[]>([
     { topic: 'Topic 1', intensity: 10 },
     { topic: 'Topic 2', intensity: 5 },
     { topic: 'Topic 3', intensity: 8 },
@@ -30,15 +42,19 @@ const Charts: React.FC = () => {
     { topic: 'Topic 31', intensity: 10 },
     { topic: 'Topic 32', intensity: 5 },
     { topic: 'Topic 43', intensity: 8 },
-    // Add more data points as needed
   ]);
 
   return (
     <>
-      <Box ml="10" mt="16">
-        <IntensityBarChart data={chartDataTntensityVsTopic} />
-      </Box>
-      <Sector />
+      <Flex mb="10" width="88vw" mr="1">
+        <Sector
+          cityList={cityList}
+          countryList={countryList}
+          startYearList={startYearList}
+          endYearList={endYearList}
+        />
+        <CountryRelevance />
+      </Flex>
     </>
   );
 };
