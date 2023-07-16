@@ -1,1 +1,2 @@
-export const BASE_URL = 'http://localhost:8080/articles/';
+export const BASE_URL =
+  'https://diptimans-backend-production.up.railway.app/articles/';
