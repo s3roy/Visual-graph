@@ -18,7 +18,7 @@ const CountryBased = () => {
       mt="6"
       position={'relative'}
       height="2xs"
-      width="2xl"
+      width="41vw"
       borderRadius="md"
     >
       <Box position={'absolute'} right={4} top={2} fontSize="xs">

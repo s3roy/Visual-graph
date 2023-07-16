@@ -34,11 +34,10 @@ const CountryRelevance = () => {
     <Box
       border="2px"
       borderColor="gray.400"
-      ml="3"
+      ml="2"
       borderRadius="lg"
       mt="2"
       width="md"
-      mr="10"
     >
       <Flex justifyContent="space-between">
         <Box>

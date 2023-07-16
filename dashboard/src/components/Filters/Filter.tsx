@@ -44,7 +44,6 @@ const Filter: React.FC<FilterProps> = ({
   return (
     <Box width="20%" p="2">
       <FormControl id="sort-by" mb="3" width="full">
-        <FormLabel color="GrayText">Sort by</FormLabel>
         <Select
           placeholder="Select sort"
           textAlign="center"
@@ -60,7 +59,6 @@ const Filter: React.FC<FilterProps> = ({
         </Select>
       </FormControl>
       <FormControl id="filter-value" mb="3">
-        <FormLabel color="GrayText">Filter by</FormLabel>
         <Select
           textAlign="center"
           width="36"

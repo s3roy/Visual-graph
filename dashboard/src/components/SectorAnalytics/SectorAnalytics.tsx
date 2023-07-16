@@ -10,7 +10,7 @@ interface SectorAnalyticsProps {
 }
 const SectorAnalytics: React.FC<SectorAnalyticsProps> = ({ cityList }) => {
   return (
-    <Flex>
+    <Flex width="88vw">
       <CountryBased />
       <Tracker />
       <Cities cityList={cityList} />

@@ -42,7 +42,7 @@ const Charts: React.FC<ChartProps> = ({ cityList }) => {
         <IntensityBarChart data={chartDataTntensityVsTopic} />
       </Box> */}
 
-      <Flex mb="10">
+      <Flex mb="10" width="88vw" mr="1">
         <Sector cityList={cityList} />
         <CountryRelevance />
       </Flex>
