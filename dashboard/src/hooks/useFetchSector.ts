@@ -9,6 +9,7 @@ const useFetchSector = (sortBy: string = '', filterValue: string = '') => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (sortBy && filterValue && !sortBy && !filterValue) return;
         let params = {};
 
         if (sortBy !== '') {

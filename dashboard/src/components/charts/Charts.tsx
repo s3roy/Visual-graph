@@ -1,6 +1,7 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
+import CountryRelevance from './CountryRelevance';
 import IntensityBarChart from './IntensityBarChart';
 import Sector from './SectorDonutChart/Sector';
 
@@ -8,8 +9,10 @@ interface DataPoint {
   topic: string;
   intensity: number;
 }
-
-const Charts: React.FC = () => {
+interface ChartProps {
+  cityList: string[];
+}
+const Charts: React.FC<ChartProps> = ({ cityList }) => {
   // Example data
   const [chartDataTntensityVsTopic, setChartData] = useState<DataPoint[]>([
     { topic: 'Topic 1', intensity: 10 },
@@ -35,10 +38,14 @@ const Charts: React.FC = () => {
 
   return (
     <>
-      <Box ml="10" mt="16">
+      {/* <Box ml="10" mt="16">
         <IntensityBarChart data={chartDataTntensityVsTopic} />
-      </Box>
-      <Sector />
+      </Box> */}
+
+      <Flex mb="10">
+        <Sector cityList={cityList} />
+        <CountryRelevance />
+      </Flex>
     </>
   );
 };

@@ -14,9 +14,9 @@ const SearchBox: React.FC<SearchBoxProps> = () => {
   return (
     <Flex
       height="16"
-      width="full"
+      width="xxl"
       border="1px"
-      mr="16"
+      mr="10"
       ml="12"
       my="4"
       borderRadius="md"
