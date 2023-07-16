@@ -30,6 +30,8 @@ const Filter: React.FC<FilterProps> = ({
   };
 
   const getFilterOptions = () => {
+    if (sortBy === 'end year') sortBy = 'endYear';
+    if (sortBy === 'start year') sortBy = 'startYear';
     const options = filterValues[sortBy];
     if (options) {
       return options.map((option) => (

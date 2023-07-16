@@ -10,9 +10,17 @@ import drawChart from './drawChart';
 
 interface SectorProps {
   cityList: string[];
+  countryList: string[];
+  startYearList: number[];
+  endYearList: number[];
 }
 
-const Sector: React.FC<SectorProps> = ({ cityList }) => {
+const Sector: React.FC<SectorProps> = ({
+  cityList,
+  countryList,
+  startYearList,
+  endYearList,
+}) => {
   const [sortBy, setSortBy] = useState<string>('');
   const [filterValue, setFilterValue] = useState<string>('');
 
@@ -20,10 +28,6 @@ const Sector: React.FC<SectorProps> = ({ cityList }) => {
 
   const svgRef = useRef<SVGSVGElement | null>(null);
   const sectorContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const countryList = ['USA', 'UK', 'Japan'];
-  const startYearList = [2000, 2005, 2010, 2015];
-  const endYearList = [2020, 2025, 2030, 2035];
 
   const sectorsArray = sectors.map(
     ({ sector, sector_count }: { sector: string; sector_count: number }) => ({

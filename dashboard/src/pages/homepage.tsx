@@ -11,8 +11,8 @@ import { getApiCall } from '@/utils/api';
 interface HomePageProps {
   cityList: string[];
   countryList: string[];
-  startYearList: string[];
-  endYearList: string[];
+  startYearList: number[];
+  endYearList: number[];
 }
 const homepage: React.FC<HomePageProps> = ({
   cityList,
@@ -31,7 +31,12 @@ const homepage: React.FC<HomePageProps> = ({
           </GridItem>
 
           <GridItem>
-            <Charts cityList={cityList} />
+            <Charts
+              cityList={cityList}
+              countryList={countryList}
+              startYearList={startYearList}
+              endYearList={endYearList}
+            />
           </GridItem>
         </Grid>
       </Box>

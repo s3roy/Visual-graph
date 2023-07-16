@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import SwitchLeftOutlinedIcon from '@mui/icons-material/SwitchLeftOutlined';
 import SwitchRightOutlinedIcon from '@mui/icons-material/SwitchRightOutlined';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import useFetchCountryRelevance from '@/hooks/useFetchRelevance';
 import getCountryFlags from '@/utils/getCountryFlag';
@@ -15,9 +15,10 @@ const CountryRelevance = () => {
     (a: { relevance_count: number }, b: { relevance_count: number }) =>
       b.relevance_count - a.relevance_count
   );
-  const displayedData = sortBy
-    ? sortedData?.slice(0, 6)
-    : sortedData?.slice(-6);
+  const displayedData = useMemo(
+    () => (sortBy ? sortedData?.slice(0, 6) : sortedData?.slice(-6)),
+    [sortedData, sortBy]
+  );
 
   useEffect(() => {
     if (displayedData) {

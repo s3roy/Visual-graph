@@ -9,12 +9,21 @@ interface DataPoint {
   topic: string;
   intensity: number;
 }
+
 interface ChartProps {
   cityList: string[];
+  countryList: string[];
+  startYearList: number[];
+  endYearList: number[];
 }
-const Charts: React.FC<ChartProps> = ({ cityList }) => {
-  // Example data
-  const [chartDataTntensityVsTopic, setChartData] = useState<DataPoint[]>([
+
+const Charts: React.FC<ChartProps> = ({
+  cityList,
+  countryList,
+  startYearList,
+  endYearList,
+}) => {
+  const [chartDataIntensityVsTopic, setChartData] = useState<DataPoint[]>([
     { topic: 'Topic 1', intensity: 10 },
     { topic: 'Topic 2', intensity: 5 },
     { topic: 'Topic 3', intensity: 8 },
@@ -33,17 +42,17 @@ const Charts: React.FC<ChartProps> = ({ cityList }) => {
     { topic: 'Topic 31', intensity: 10 },
     { topic: 'Topic 32', intensity: 5 },
     { topic: 'Topic 43', intensity: 8 },
-    // Add more data points as needed
   ]);
 
   return (
     <>
-      {/* <Box ml="10" mt="16">
-        <IntensityBarChart data={chartDataTntensityVsTopic} />
-      </Box> */}
-
       <Flex mb="10" width="88vw" mr="1">
-        <Sector cityList={cityList} />
+        <Sector
+          cityList={cityList}
+          countryList={countryList}
+          startYearList={startYearList}
+          endYearList={endYearList}
+        />
         <CountryRelevance />
       </Flex>
     </>
