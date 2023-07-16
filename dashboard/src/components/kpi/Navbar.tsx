@@ -16,7 +16,7 @@ const Logo = () => (
 
 const Navbar: React.FC<NavbarProps> = () => {
   return (
-    <Stack height="100vh" borderRight="1px" width="15vw" pr="8">
+    <Stack height="auto" borderRight="1px" width="15vw" pr="8">
       {/* <Box boxSize='sm'>
         <Image src="" alt="Description of the image" boxSize="100" objectFit="contain" />
       </Box> */}

@@ -23,7 +23,7 @@ const homepage: React.FC<HomePageProps> = ({
   return (
     <Flex>
       <Navbar />
-      <Box width="90vw">
+      <Box width="80vw">
         <SearchBox />
         <Grid>
           <GridItem>
