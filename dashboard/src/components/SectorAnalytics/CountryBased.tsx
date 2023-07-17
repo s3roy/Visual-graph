@@ -56,16 +56,20 @@ const CountryBased = () => {
   return (
     <Flex
       bg="#7367F0"
-      ml={{ base: '2', md: '12' }}
-      mt={{ base: '2', md: '6' }}
+      ml={{ base: '1', md: '3', lg: '10' }}
+      mt={{ base: '1', md: '3', lg: '5' }}
       position={'relative'}
-      height={{ base: 'xs', md: '2xs' }}
-      width={{ base: '80vw', md: '41vw' }}
+      height={{ base: '10vh', md: '20vh', lg: '30vh' }}
+      width={{ base: '75vw', md: '50vw', lg: '30vw' }}
       borderRadius="md"
-      direction={{ base: 'column', md: 'row' }}
       justify="center"
     >
-      <Box position={'absolute'} right={4} top={2} fontSize="xs">
+      <Box
+        position={'absolute'}
+        right={3}
+        top={2}
+        fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
+      >
         <CircleIcon
           fontSize="inherit"
           onClick={handleHighestClick}
@@ -88,27 +92,26 @@ const CountryBased = () => {
           <Box>
             <Text
               fontFamily="cursive"
-              fontSize="3xl"
+              fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
               fontWeight="extrabold"
               color="white"
-              mt="4"
-              ml="12"
+              mt={{ base: '1', md: '2', lg: '3' }}
+              ml={{ base: '2', md: '5', lg: '8' }}
             >
               Country Analytics
             </Text>
             <Text
               fontFamily="cursive"
-              fontSize="sm"
+              fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
               fontWeight="light"
               color="white"
               mt="-1"
-              ml="20"
+              ml={{ base: '3', sm: '6', md: '10', lg: '14' }}
             >
               Country with highest sectors
             </Text>
-            {/* Show more data */}
             {highestData?.map((data, index) => (
-              <Box key={index}>
+              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
                 <Text>Country: {data.country}</Text>
                 <Text>Sector: {data.sector}</Text>
                 <Text>Intensity: {data.intensity}</Text>
@@ -116,12 +119,15 @@ const CountryBased = () => {
               </Box>
             ))}
           </Box>
-          <Box mt="16" ml="36">
+          <Box
+            mt={{ base: '3', md: '6', lg: '12' }}
+            ml={{ base: '2', md: '12', lg: '24' }}
+          >
             <Image
               src={highestCountry}
               alt="country"
-              width={300}
-              height={300}
+              width={100}
+              height={100}
             />
           </Box>
         </Flex>
@@ -131,27 +137,26 @@ const CountryBased = () => {
           <Box>
             <Text
               fontFamily="cursive"
-              fontSize="28"
+              fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
               fontWeight="extrabold"
               color="white"
-              mt="4"
-              ml="12"
+              mt={{ base: '1', md: '2', lg: '3' }}
+              ml={{ base: '2', md: '5', lg: '8' }}
             >
               Country Analytics
             </Text>
             <Text
               fontFamily="cursive"
-              fontSize="sm"
+              fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
               fontWeight="light"
               color="white"
               mt="-1"
-              ml="20"
+              ml={{ base: '3', sm: '6', md: '10', lg: '14' }}
             >
               Country with lowest sectors
             </Text>
-            {/* Show more data */}
             {lowestData?.map((data, index) => (
-              <Box key={index}>
+              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
                 <Text>Country: {data.country}</Text>
                 <Text>Sector: {data.sector}</Text>
                 <Text>Intensity: {data.intensity}</Text>
@@ -159,8 +164,11 @@ const CountryBased = () => {
               </Box>
             ))}
           </Box>
-          <Box mt="16" ml="36">
-            <Image src={lowestCountry} alt="country" width={300} height={300} />
+          <Box
+            mt={{ base: '3', md: '6', lg: '12' }}
+            ml={{ base: '2', md: '12', lg: '24' }}
+          >
+            <Image src={lowestCountry} alt="country" width={100} height={100} />
           </Box>
         </Flex>
       )}
