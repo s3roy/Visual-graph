@@ -33,7 +33,6 @@ const Navbar: React.FC<NavbarProps> = () => {
       height="auto"
       borderRight="1px"
       width={['60vw', '30vw', '20vw', '15vw']}
-      position="relative"
     >
       <Box mt="4">
         <Stack direction="row">
@@ -64,27 +63,27 @@ const Navbar: React.FC<NavbarProps> = () => {
                     justifyContent="center"
                     ml="4"
                   >
-                    <Icon boxSize={6} />
+                    <Icon />
                   </Box>
                   <Text ml={4}>{text}</Text>
                 </Box>
               </Box>
             ))}
-            <Box
-              position="absolute"
-              fontSize="3rem"
-              right="8"
-              bottom="10"
-              border="1px"
-              color="purple"
-              borderRadius="full"
-              cursor="pointer"
-              _hover={{ fontSize: '4rem' }}
-            >
-              <SupportAgentIcon fontSize="inherit" color="info" />
-            </Box>
           </Stack>
         </div>
+        <Box
+          position="fixed"
+          fontSize="3rem"
+          left="1rem"
+          bottom="1rem"
+          border="1px"
+          color="purple"
+          borderRadius="full"
+          cursor="pointer"
+          _hover={{ fontSize: '4rem' }}
+        >
+          <SupportAgentIcon fontSize="inherit" color="info" />
+        </Box>
       </Box>
     </Stack>
   );
