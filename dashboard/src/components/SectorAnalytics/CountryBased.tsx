@@ -60,7 +60,7 @@ const CountryBased = () => {
       mt={{ base: '1', md: '3', lg: '5' }}
       position={'relative'}
       height={{ base: '10vh', md: '20vh', lg: '30vh' }}
-      width={{ base: '75vw', md: '50vw', lg: '30vw' }}
+      width="45%"
       borderRadius="md"
       justify="center"
     >
@@ -114,7 +114,7 @@ const CountryBased = () => {
               <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
                 <Text>Country: {data.country}</Text>
                 <Text>Sector: {data.sector}</Text>
-                <Text>Intensity: {data.intensity}</Text>
+                <Text>Intensity: {data.relevance}</Text>
                 <Text>Relevance: {data.relevance}</Text>
               </Box>
             ))}
@@ -159,7 +159,7 @@ const CountryBased = () => {
               <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
                 <Text>Country: {data.country}</Text>
                 <Text>Sector: {data.sector}</Text>
-                <Text>Intensity: {data.intensity}</Text>
+                <Text>Intensity: {data.relevance}</Text>
                 <Text>Relevance: {data.relevance}</Text>
               </Box>
             ))}

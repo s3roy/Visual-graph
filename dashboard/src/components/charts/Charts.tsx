@@ -46,7 +46,7 @@ const Charts: React.FC<ChartProps> = ({
 
   return (
     <>
-      <Flex mb="10" width="88vw" mr="1">
+      <Flex mb="10" width="82vw" mr="1">
         <Sector
           cityList={cityList}
           countryList={countryList}
