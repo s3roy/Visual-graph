@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             {COMPANY_NAME}
           </Text>
         </Stack>
-        <Text fontSize="2xl" p={3} mt="6" fontFamily="cursive">
+        <Text fontSize="xl" p={3} mt="6" >
           Apps & Pages
         </Text>
         <div>
@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   display="flex"
                   alignItems="center"
                   cursor="pointer"
-                  pl={2}
+                  pl={1}
                   _hover={{ border: '1px solid blue', borderRadius: '4px' }}
                 >
                   <Box
@@ -61,11 +61,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-                    ml="4"
+                    fontSize="19"
+                    ml="3"
                   >
                     <Icon />
                   </Box>
-                  <Text ml={4}>{text}</Text>
+                  <Text ml={1}>{text}</Text>
                 </Box>
               </Box>
             ))}

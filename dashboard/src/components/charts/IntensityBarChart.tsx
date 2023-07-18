@@ -1,6 +1,8 @@
+import useFetchTopicIntensity from '@/hooks/useIntensityTopic';
 import { Box } from '@chakra-ui/react';
 import * as d3 from 'd3';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Filter from '../Filters/Filter';
 
 interface DataPoint {
   topic: string;
@@ -10,9 +12,12 @@ interface DataPoint {
 interface IntensityBarChartProps {
   data: DataPoint[];
 }
-
-const IntensityBarChart: React.FC<IntensityBarChartProps> = ({ data }) => {
+const sortOptions=['startYear','endYear'];
+const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
   const chartRef = useRef<HTMLDivElement>(null);
+  const [sortBy, setSortBy] = useState<string>('');
+  const [filterValue, setFilterValue] = useState<string>('');
+  const { data, error, loading } = useFetchTopicIntensity(sortBy, filterValue);
 
   useEffect(() => {
     const chartContainer = d3.select(chartRef.current);
@@ -118,7 +123,11 @@ const IntensityBarChart: React.FC<IntensityBarChartProps> = ({ data }) => {
     }
   };
 
-  return <Box ref={chartRef} width="100%" />;
+  return (<><Box ref={chartRef} width="100%" /><Filter sortBy={''} filterValue={''} setSortBy={setSortBy}
+   setFilterValue={setFilterValue} sortOptions={sortOptions} filterValues={{
+    startYear: startYearList.map(String),
+    endYear: endYearList.map(String),
+  }}></Filter></>);
 };
 
 export default IntensityBarChart;

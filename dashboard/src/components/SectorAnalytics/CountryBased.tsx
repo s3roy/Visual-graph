@@ -57,7 +57,7 @@ const CountryBased = () => {
     <Flex
       bg="#7367F0"
       ml={{ base: '1', md: '3', lg: '10' }}
-      mt={{ base: '1', md: '3', lg: '5' }}
+      mt={{ base: '1', md: '4', lg: '7' }}
       position={'relative'}
       height={{ base: '10vh', md: '20vh', lg: '30vh' }}
       width="45%"
@@ -101,21 +101,22 @@ const CountryBased = () => {
               Country Analytics
             </Text>
             <Text
-              fontFamily="cursive"
+              //fontFamily="cursive"
               fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
               fontWeight="light"
               color="white"
               mt="-1"
-              ml={{ base: '3', sm: '6', md: '10', lg: '14' }}
+              padding="2"
+              ml={{ base: '3', sm: '6', md: '5', lg: 'md' }}
             >
               Country with highest sectors
             </Text>
             {highestData?.map((data, index) => (
-              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
-                <Text>Country: {data.country}</Text>
-                <Text>Sector: {data.sector}</Text>
-                <Text>Intensity: {data.relevance}</Text>
-                <Text>Relevance: {data.relevance}</Text>
+              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '5' }}>
+                <Text fontWeight="bold">Country: {data.country}</Text>
+                <Text fontWeight="bold">Sector: {data.sector}</Text>
+                <Text fontWeight="bold">Intensity: {data.relevance}</Text>
+                <Text fontWeight="bold">Relevance: {data.relevance}</Text>
               </Box>
             ))}
           </Box>
@@ -146,21 +147,22 @@ const CountryBased = () => {
               Country Analytics
             </Text>
             <Text
-              fontFamily="cursive"
+              //fontFamily="cursive"
               fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
               fontWeight="light"
               color="white"
               mt="-1"
-              ml={{ base: '3', sm: '6', md: '10', lg: '14' }}
+              padding="2"
+              ml={{ base: '3', sm: '6', md: '5', lg: 'md' }}
             >
               Country with lowest sectors
             </Text>
             {lowestData?.map((data, index) => (
               <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
-                <Text>Country: {data.country}</Text>
-                <Text>Sector: {data.sector}</Text>
-                <Text>Intensity: {data.relevance}</Text>
-                <Text>Relevance: {data.relevance}</Text>
+                <Text fontWeight="bold">Country: {data.country}</Text>
+                <Text fontWeight="bold">Sector: {data.sector}</Text>
+                <Text fontWeight="bold">Intensity: {data.relevance}</Text>
+                <Text fontWeight="bold">Relevance: {data.relevance}</Text>
               </Box>
             ))}
           </Box>
