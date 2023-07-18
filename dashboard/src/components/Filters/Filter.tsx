@@ -48,9 +48,9 @@ const Filter: React.FC<FilterProps> = ({
     <Box width="20%" p="2">
       <FormControl id="sort-by" mb="3" width="full">
         <Select
-          placeholder="Select sort"
+          placeholder="Select filter type"
           textAlign="center"
-          width="36"
+          width="44"
           value={sortBy}
           onChange={handleSortByChange}
         >

@@ -136,6 +136,7 @@ const IntensityBarChart: React.FC<IntensityBarChartProps> = ({
         borderRadius="lg"
         ml="12"
         mt="2"
+        mb="4"
         position="relative"
         justifyContent="space-between"
         borderColor="gray.400"
