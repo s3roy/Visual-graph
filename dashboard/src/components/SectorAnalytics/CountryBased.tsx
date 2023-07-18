@@ -62,34 +62,110 @@ const CountryBased = () => {
       <Box>
         <Text
           fontFamily="cursive"
-          fontSize="md"
+          fontSize="3xl"
           fontWeight="extrabold"
           color="white"
-          mt="2"
+          mt="4"
+          ml="4"
         >
           Country Analytics
         </Text>
         <Text
+          fontFamily="cursive"
           fontSize="sm"
           fontWeight="light"
           color="white"
-          mt="-1"
+          mt="-3"
           padding="2"
-          ml="3"
+          ml="5"
         >
           {label}
         </Text>
         {data?.map((data: any, index: number) => (
-          <Box key={index} ml="3">
-            <Text fontWeight="bold">Country: {data.country}</Text>
-            <Text fontWeight="bold">Sector: {data.sector}</Text>
-            <Text fontWeight="bold">Intensity: {data.relevance}</Text>
-            <Text fontWeight="bold">Relevance: {data.relevance}</Text>
+          <Box key={index} ml="6" mt="8">
+            <Flex gap="8">
+              <Flex alignItems="center" gap="2">
+                <Box
+                  bg="#5c4dff"
+                  boxSize="fit-content"
+                  py="2"
+                  px="4"
+                  borderRadius="lg"
+                  fontWeight="semibold"
+                  color="white"
+                >
+                  {data.sector}
+                </Box>
+                <Text
+                  fontFamily="cursive"
+                  fontSize="sm"
+                  fontWeight="light"
+                  color="white"
+                >
+                  Sector
+                </Text>
+              </Flex>
+
+              <Flex alignItems="center" gap="2">
+                <Box
+                  bg="#5c4dff"
+                  boxSize="fit-content"
+                  py="2"
+                  px="4"
+                  borderRadius="lg"
+                  fontWeight="semibold"
+                  color="white"
+                >
+                  {data?.intensity || data.relevance * 22.7}
+                </Box>
+                <Text
+                  fontFamily="cursive"
+                  fontSize="sm"
+                  fontWeight="light"
+                  color="white"
+                >
+                  Intensity
+                </Text>
+              </Flex>
+            </Flex>
+
+            <Flex alignItems="center" gap="2" mt="4">
+              <Box
+                bg="#5c4dff"
+                boxSize="fit-content"
+                py="2"
+                px="4"
+                borderRadius="lg"
+                fontWeight="semibold"
+                color="white"
+              >
+                {data?.relevance || 28 * 22.7}
+              </Box>
+              <Text
+                fontFamily="cursive"
+                fontSize="sm"
+                fontWeight="light"
+                color="white"
+              >
+                Relevance
+              </Text>
+            </Flex>
           </Box>
         ))}
       </Box>
-      <Box mt="3" ml="2">
-        <Image src={imageSrc} alt="country" width={100} height={100} />
+      <Box position="absolute" right="4" bottom="4">
+        <Box
+          display="inline-block"
+          width="8vw"
+          height="16vh"
+          borderRadius="full"
+          overflow="hidden"
+          boxShadow="2xl"
+          border="2px solid white"
+          position="relative"
+        >
+          <Image src={imageSrc} alt="country" layout="fill" objectFit="cover" />
+        </Box>
       </Box>
     </Flex>
   );
@@ -106,17 +182,19 @@ const CountryBased = () => {
     >
       <Box position="absolute" right={3} top={2} fontSize="md">
         <CircleIcon
-          fontSize="inherit"
           onClick={handleToggleActive}
           style={{
-            color: isActive ? 'white' : 'inherit',
+            color: isActive ? 'rgba(255, 255, 255, 0.7)' : '#4a3afb',
             marginRight: '0.2rem',
+            fontSize: 15,
           }}
         />
         <CircleIcon
-          fontSize="inherit"
           onClick={handleToggleActive}
-          style={{ color: !isActive ? 'white' : 'inherit' }}
+          style={{
+            color: !isActive ? 'rgba(255, 255, 255, 0.7)' : '#4a3afb',
+            fontSize: 15,
+          }}
         />
       </Box>
 
