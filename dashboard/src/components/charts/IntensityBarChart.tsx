@@ -23,7 +23,7 @@ const IntensityBarChart: React.FC<IntensityBarChartProps> = ({
   useEffect(() => {
     const chartContainer = d3.select(chartRef.current);
 
-    // Clear previous chart
+    // ! Clear previous chart
     chartContainer.selectAll('*').remove();
 
     if (data.length > 0) {
