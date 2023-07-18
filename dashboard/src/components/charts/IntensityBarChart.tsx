@@ -1,7 +1,9 @@
-import useFetchTopicIntensity from '@/hooks/useIntensityTopic';
 import { Box } from '@chakra-ui/react';
 import * as d3 from 'd3';
 import React, { useEffect, useRef, useState } from 'react';
+
+import useFetchTopicIntensity from '@/hooks/useIntensityTopic';
+
 import Filter from '../Filters/Filter';
 
 interface DataPoint {
@@ -10,14 +12,18 @@ interface DataPoint {
 }
 
 interface IntensityBarChartProps {
-  data: DataPoint[];
+  startYearList: Number[];
+  endYearList: Number[];
 }
-const sortOptions=['startYear','endYear'];
-const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
+const sortOptions = ['start year', 'end year'];
+const IntensityBarChart: React.FC<IntensityBarChartProps> = ({
+  startYearList,
+  endYearList,
+}) => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [sortBy, setSortBy] = useState<string>('');
   const [filterValue, setFilterValue] = useState<string>('');
-  const { data, error, loading } = useFetchTopicIntensity(sortBy, filterValue);
+  const { data } = useFetchTopicIntensity(sortBy, filterValue);
 
   useEffect(() => {
     const chartContainer = d3.select(chartRef.current);
@@ -50,7 +56,10 @@ const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(data, (d) => (d.intensity + 5) as number) as number])
+      .domain([
+        0,
+        d3.max(data, (d) => (d.intensity ? d.intensity + 5 : 0)) as number,
+      ])
       .range([height - margin.bottom, margin.top]);
 
     // Create SVG element
@@ -67,19 +76,13 @@ const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
       .enter()
       .append('rect')
       .attr('x', (d) => xScale(d.topic) as number)
-      .attr('y', (d) => yScale(d.intensity) as number)
+      .attr('y', (d) => yScale(d.intensity || 0) as number)
       .attr('width', xScale.bandwidth())
       .attr(
         'height',
-        (d) => height - margin.bottom - (yScale(d.intensity) as number)
+        (d) => height - margin.bottom - (yScale(d.intensity || 0) as number)
       )
       .attr('fill', 'steelblue');
-
-    // Create x-axis
-    svg
-      .append('g')
-      .attr('transform', `translate(0, ${height - margin.bottom})`)
-      .call(d3.axisBottom(xScale));
 
     // Create y-axis
     svg
@@ -91,7 +94,10 @@ const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
     bars.on('mouseover', handleMouseOver).on('mouseout', handleMouseOut);
 
     // Mouseover event handler
-    function handleMouseOver(event: any, d: DataPoint) {
+    function handleMouseOver(
+      event: any,
+      d: { intensity: number | null; topic: string }
+    ) {
       const selectedBar = d3.select(event.currentTarget);
 
       // Darken the fill color of the selected bar
@@ -108,7 +114,11 @@ const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
         .attr('x', xPos + xScale.bandwidth() / 2)
         .attr('y', yPos - 10)
         .attr('text-anchor', 'middle')
-        .text(`Topic: ${d.topic}, Intensity: ${d.intensity}`);
+        .text(
+          `Topic: ${d.topic}, Intensity: ${
+            d.intensity !== null ? d.intensity : 'N/A'
+          }`
+        );
     }
 
     // Mouseout event handler
@@ -123,11 +133,22 @@ const IntensityBarChart: React.FC<> = ({ startYearList, endYearList }) => {
     }
   };
 
-  return (<><Box ref={chartRef} width="100%" /><Filter sortBy={''} filterValue={''} setSortBy={setSortBy}
-   setFilterValue={setFilterValue} sortOptions={sortOptions} filterValues={{
-    startYear: startYearList.map(String),
-    endYear: endYearList.map(String),
-  }}></Filter></>);
+  return (
+    <>
+      <Box ref={chartRef} width="100%" />
+      <Filter
+        sortBy={sortBy}
+        filterValue={filterValue}
+        setSortBy={setSortBy}
+        setFilterValue={setFilterValue}
+        sortOptions={sortOptions}
+        filterValues={{
+          startYear: startYearList.map(String),
+          endYear: endYearList.map(String),
+        }}
+      ></Filter>
+    </>
+  );
 };
 
 export default IntensityBarChart;
