@@ -56,10 +56,10 @@ const CountryBased = () => {
   return (
     <Flex
       bg="#7367F0"
-      ml={{ base: '1', md: '3', lg: '10' }}
-      mt={{ base: '1', md: '4', lg: '7' }}
+      ml={{ base: '4', md: '6', lg: '12' }}
+      mt={{ base: '0', md: '4', lg: '6' }}
       position={'relative'}
-      height={{ base: '10vh', md: '20vh', lg: '30vh' }}
+      height={{ base: '10vh', md: '20vh', lg: '32vh' }}
       width="45%"
       borderRadius="md"
       justify="center"

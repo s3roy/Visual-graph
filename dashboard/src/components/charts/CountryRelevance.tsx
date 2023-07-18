@@ -1,10 +1,10 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react';
-import SwitchLeftOutlinedIcon from '@mui/icons-material/SwitchLeftOutlined';
-import SwitchRightOutlinedIcon from '@mui/icons-material/SwitchRightOutlined';
-import { useEffect, useMemo, useState } from 'react';
+import { Box, Flex, Image, Spinner, Text } from "@chakra-ui/react";
+import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
+import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
+import { useEffect, useMemo, useState } from "react";
 
-import useFetchCountryRelevance from '@/hooks/useFetchRelevance';
-import getCountryFlags from '@/utils/getCountryFlag';
+import useFetchCountryRelevance from "@/hooks/useFetchRelevance";
+import getCountryFlags from "@/utils/getCountryFlag";
 
 const CountryRelevance = () => {
   const [sortBy, setSortBy] = useState(true);
@@ -28,7 +28,15 @@ const CountryRelevance = () => {
     }
   }, [displayedData]);
 
-  if (loading) return <Box>Loading...</Box>;
+  if (loading) {
+    return (
+      <Box position="relative" height="100vh">
+        <Box position="absolute" left="36" top="52">
+          <Spinner size="xl" color="blue" />
+        </Box>
+      </Box>
+    );
+  }
   if (error) return <Box>Error: {error}</Box>;
 
   return (
@@ -59,9 +67,9 @@ const CountryRelevance = () => {
 
         <Box onClick={() => setSortBy((sort) => !sort)} mt="2" mr="4">
           {sortBy ? (
-            <SwitchRightOutlinedIcon style={{ color: 'gray' }} />
+            <SwitchRightOutlinedIcon style={{ color: "gray" }} />
           ) : (
-            <SwitchLeftOutlinedIcon style={{ color: 'gray' }} />
+            <SwitchLeftOutlinedIcon style={{ color: "gray" }} />
           )}
         </Box>
       </Flex>
