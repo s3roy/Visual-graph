@@ -45,134 +45,93 @@ const CountryBased = () => {
     }
   }, [highestData, lowestData]);
 
-  const handleHighestClick = () => {
-    setIsActive(true);
+  const handleToggleActive = () => {
+    setIsActive(!isActive);
   };
 
-  const handleLowestClick = () => {
-    setIsActive(false);
-  };
+  const AnalyticsSection = ({
+    data,
+    label,
+    imageSrc,
+  }: {
+    data: any;
+    label: string;
+    imageSrc: string;
+  }) => (
+    <Flex>
+      <Box>
+        <Text
+          fontFamily="cursive"
+          fontSize="md"
+          fontWeight="extrabold"
+          color="white"
+          mt="2"
+        >
+          Country Analytics
+        </Text>
+        <Text
+          fontSize="sm"
+          fontWeight="light"
+          color="white"
+          mt="-1"
+          padding="2"
+          ml="3"
+        >
+          {label}
+        </Text>
+        {data?.map((data: any, index: number) => (
+          <Box key={index} ml="3">
+            <Text fontWeight="bold">Country: {data.country}</Text>
+            <Text fontWeight="bold">Sector: {data.sector}</Text>
+            <Text fontWeight="bold">Intensity: {data.relevance}</Text>
+            <Text fontWeight="bold">Relevance: {data.relevance}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Box mt="3" ml="2">
+        <Image src={imageSrc} alt="country" width={100} height={100} />
+      </Box>
+    </Flex>
+  );
 
   return (
     <Flex
       bg="#7367F0"
-      ml={{ base: '4', md: '6', lg: '12' }}
-      mt={{ base: '0', md: '4', lg: '6' }}
-      position={'relative'}
-      height={{ base: '10vh', md: '20vh', lg: '32vh' }}
+      ml="12"
+      mt="6"
+      position="relative"
+      height="34vh"
       width="45%"
       borderRadius="md"
-      justify="center"
     >
-      <Box
-        position={'absolute'}
-        right={3}
-        top={2}
-        fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
-      >
+      <Box position="absolute" right={3} top={2} fontSize="md">
         <CircleIcon
           fontSize="inherit"
-          onClick={handleHighestClick}
+          onClick={handleToggleActive}
           style={{
             color: isActive ? 'white' : 'inherit',
             marginRight: '0.2rem',
           }}
         />
-
         <CircleIcon
           fontSize="inherit"
-          onClick={handleLowestClick}
-          style={{
-            color: !isActive ? 'white' : 'inherit',
-          }}
+          onClick={handleToggleActive}
+          style={{ color: !isActive ? 'white' : 'inherit' }}
         />
       </Box>
-      {isActive && (
-        <Flex>
-          <Box>
-            <Text
-              fontFamily="cursive"
-              fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
-              fontWeight="extrabold"
-              color="white"
-              mt={{ base: '1', md: '2', lg: '3' }}
-              ml={{ base: '2', md: '5', lg: '8' }}
-            >
-              Country Analytics
-            </Text>
-            <Text
-              //fontFamily="cursive"
-              fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
-              fontWeight="light"
-              color="white"
-              mt="-1"
-              padding="2"
-              ml={{ base: '3', sm: '6', md: '5', lg: 'md' }}
-            >
-              Country with highest sectors
-            </Text>
-            {highestData?.map((data, index) => (
-              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '5' }}>
-                <Text fontWeight="bold">Country: {data.country}</Text>
-                <Text fontWeight="bold">Sector: {data.sector}</Text>
-                <Text fontWeight="bold">Intensity: {data.relevance}</Text>
-                <Text fontWeight="bold">Relevance: {data.relevance}</Text>
-              </Box>
-            ))}
-          </Box>
-          <Box
-            mt={{ base: '3', md: '6', lg: '12' }}
-            ml={{ base: '2', md: '12', lg: '24' }}
-          >
-            <Image
-              src={highestCountry}
-              alt="country"
-              width={100}
-              height={100}
-            />
-          </Box>
-        </Flex>
-      )}
-      {!isActive && (
-        <Flex>
-          <Box>
-            <Text
-              fontFamily="cursive"
-              fontSize={{ base: 'xs', md: 'sm', lg: 'md' }}
-              fontWeight="extrabold"
-              color="white"
-              mt={{ base: '1', md: '2', lg: '3' }}
-              ml={{ base: '2', md: '5', lg: '8' }}
-            >
-              Country Analytics
-            </Text>
-            <Text
-              //fontFamily="cursive"
-              fontSize={{ base: 'xs', sm: 'sm', md: 'sm', lg: 'md' }}
-              fontWeight="light"
-              color="white"
-              mt="-1"
-              padding="2"
-              ml={{ base: '3', sm: '6', md: '5', lg: 'md' }}
-            >
-              Country with lowest sectors
-            </Text>
-            {lowestData?.map((data, index) => (
-              <Box key={index} ml={{ base: '1', sm: '3', md: '5', lg: '7' }}>
-                <Text fontWeight="bold">Country: {data.country}</Text>
-                <Text fontWeight="bold">Sector: {data.sector}</Text>
-                <Text fontWeight="bold">Intensity: {data.relevance}</Text>
-                <Text fontWeight="bold">Relevance: {data.relevance}</Text>
-              </Box>
-            ))}
-          </Box>
-          <Box
-            mt={{ base: '3', md: '6', lg: '12' }}
-            ml={{ base: '2', md: '12', lg: '24' }}
-          >
-            <Image src={lowestCountry} alt="country" width={100} height={100} />
-          </Box>
-        </Flex>
+
+      {isActive ? (
+        <AnalyticsSection
+          data={highestData}
+          label="Country with highest sectors"
+          imageSrc={highestCountry}
+        />
+      ) : (
+        <AnalyticsSection
+          data={lowestData}
+          label="Country with lowest sectors"
+          imageSrc={lowestCountry}
+        />
       )}
     </Flex>
   );

@@ -25,7 +25,7 @@ const Charts: React.FC<ChartProps> = ({
 }) => {
   return (
     <>
-      <Flex mb="10" width="82vw" mr="1">
+      <Flex mb="2" width="82vw" mr="1">
         <Sector
           cityList={cityList}
           countryList={countryList}
@@ -34,9 +34,10 @@ const Charts: React.FC<ChartProps> = ({
         />
         <CountryRelevance />
       </Flex>
-      <IntensityBarChart 
-      startYearList={startYearList}
-          endYearList={endYearList}/>
+      <IntensityBarChart
+        startYearList={startYearList}
+        endYearList={endYearList}
+      />
     </>
   );
 };
